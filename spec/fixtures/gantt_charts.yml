@@ -1,0 +1,4 @@
+example_chart:
+  name: Test Chart
+  start:  <%= 5.days.ago %>
+  end:  <%= 2.days.ago %>

@@ -1,0 +1,20 @@
+path, line {
+  fill: none;
+  stroke: black;
+}
+
+.gantt-bar {
+  cursor: grab;
+}
+
+.gantt-bar.grabbing {
+  cursor: grabbing;
+}
+
+.gantt-bar.on-left {
+  cursor: w-resize;
+}
+
+.gantt-bar.on-right{
+  cursor: e-resize;
+}

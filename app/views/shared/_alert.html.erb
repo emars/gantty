@@ -1,0 +1,10 @@
+<% if flash.alert %>
+  <div class="alert alert-danger text-center">
+    <strong>Oh snap! </strong><%= flash.alert %>
+  </div>
+</div>
+<% elsif flash.notice %>
+  <div class="alert alert-info text-center">
+    <strong>Notice: </strong><%= flash.notice %>
+  </div>
+<% end %>

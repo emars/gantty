@@ -1,0 +1,16 @@
+<div class='text-center'>
+  <h3>Showing: <%= @gantt_chart.name %></h3>
+
+  <%= link_to new_task_path(@gantt_chart.uid) do %>
+    <button class='btn btn-primary'>Add Task</button>
+  <% end %>
+
+  <%= link_to edit_gantt_chart_path(@gantt_chart.uid) do %>
+    <button class='btn btn-primary'>Edit Chart</button>
+  <% end %>
+</div>
+<%= react_component("GanttChart", props: @gantt_chart_props, prerender: false) %>
+
+<div class='container'>
+  <%= render 'shared/instructions' %>
+</div>

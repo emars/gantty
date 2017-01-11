@@ -1,0 +1,29 @@
+<div class='container'>
+  <div class='row' style='margin-top:25px'>
+    <div class='col'></div>
+    <div class='col'>
+      <%= form_for(@task, url: { to: create_task_path}) do |f| %>
+        <h3>New Task</h3>
+        <%= f.label 'Name' %>
+        <div class='input-group input-group-lg'>
+          <%= f.text_field :name, class: 'form-control', placeholder: 'Name' %>
+        </div>
+
+        <%= f.label 'Start' %>
+        <%= f.datetime_field :start, class: 'form-control', placeholder: 'Name' %>
+
+        <%= f.label 'End' %>
+        <%= f.datetime_field :end, class: 'form-control', placeholder: 'Name' %>
+
+        <%= f.hidden_field :gantt_chart_id %>
+
+        <div class='row' style='margin-top:25px;'>
+          <div class='col text-right'>
+            <button class='btn btn-lg btn-primary' type='submit'>Submit</button>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class='col'></div>
+  </div>
+</div>

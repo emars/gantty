@@ -1,0 +1,14 @@
+<nav class='navbar navbar-toggleable-md navbar-light bg-faded'>
+  <div class='container'>
+    <%= link_to root_path, class: 'navbar-brand' do %>
+      Gantty
+    <% end %>
+    <ul class='navbar-nav mr-auto'>
+    </ul>
+    <form class='form-inline'>
+      <%= link_to new_gantt_chart_path do %>
+        <button class='btn btn-outline-primary'>New Chart</button>
+      <% end %>
+    </form>
+  </div>
+</nav>
