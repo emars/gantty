@@ -6,11 +6,13 @@ Gantty is a gantt chart application that allows users to easily.
 
 The application is written using Ruby on Rails + React.
 
-The GanttChart component is written using D3.js with no external dependencies
+The GanttChart component is written using D3.js with no external dependencies.
 
 ## Hosting
 
 It is currently being hosted on a Heroku free tier instance using a postgresql free tier database.
+
+https://gantty-app.herokuapp.com
 
 ## Features
 
