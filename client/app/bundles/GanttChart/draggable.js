@@ -1,6 +1,8 @@
 import { addHours } from './helpers'
 
 export default function draggable (opts) {
+  console.log(opts)
+
   return function (sel) {
       sel.on('mousemove', function (e) {
         const rect = d3.select(this).node().getBoundingClientRect()
@@ -57,29 +59,40 @@ export default function draggable (opts) {
         const direction = Math.round(diffX / opts.dragTickSize)
         diffX = 0
         if ( ! draggingLeft && ! draggingRight) {
-          d.start = addHours(d.start, 1 * direction)
-          d.end = addHours(d.end, 1 * direction)
+          const newX = startingX + opts.dragTickSize * direction
+          if (! ((newX < opts.min) || (newX + startingWidth > opts.max))) {
+            d.start = addHours(d.start, 1 * direction)
+            d.end = addHours(d.end, 1 * direction)
 
-          d3.select(this).attr('x', function (d) {
-            return startingX + opts.dragTickSize * direction
-          })
+            d3.select(this).attr('x', function (d) {
+              return newX
+            })
+          }
 
         } else if (draggingLeft) {
-          d.start = addHours(d.start, 1 * direction)
+          const newWidth = startingWidth + opts.dragTickSize * -1 * direction
+          const newX = startingX + opts.dragTickSize * direction
+          if (! ((newWidth < opts.minWidth) || (newX < opts.min) || (newX + newWidth > opts.max))) {
+            d.start = addHours(d.start, 1 * direction)
 
-          d3.select(this).attr('width', function (d) {
-            return startingWidth + opts.dragTickSize * -1 * direction
-          })
-          d3.select(this).attr('x', function (d) {
-            return startingX + opts.dragTickSize * direction
-          })
+            d3.select(this).attr('width', function (d) {
+              return newWidth
+            })
+            d3.select(this).attr('x', function (d) {
+              return newX
+            })
+          }
           
         } else {
-          d.end = addHours(d.end, 1 * direction)
+          const newWidth = startingWidth + opts.dragTickSize * direction
+          if (! ((newWidth < opts.minWidth) || (startingX < opts.min) || (startingX + newWidth > opts.max))) {
 
-          d3.select(this).attr('width', function (d) {
-            return startingWidth + opts.dragTickSize * direction
-          })
+            d.end = addHours(d.end, 1 * direction)
+
+            d3.select(this).attr('width', function (d) {
+              return  newWidth
+            })
+          }
         }
       }
     }

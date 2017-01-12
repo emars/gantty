@@ -115,7 +115,10 @@ export default class D3GanttChart extends Component {
       dragTickSize: this.dragTickSize,
       onBarChange: () => {
         self.props.onChange(self.getD3Data())
-      }
+      },
+      min: this.x(this.props.start),
+      max: this.x(this.props.end),
+      minWidth: this.dragTickSize 
     }
 
     this.chart = this.vis.selectAll('.chart')
